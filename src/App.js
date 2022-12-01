@@ -44,7 +44,7 @@ const App = ({ signOut }) => {
     console.log(data.grade);
     await API.graphql({
       query: createStudentMutation,
-      variables: { input: {firstname: "crazy", lastname: "manwoman", grade: 10} },
+      variables: { input: data },
     });
     //fetchStudents();
     event.target.reset();
