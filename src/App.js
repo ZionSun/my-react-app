@@ -22,7 +22,7 @@ const App = ({ signOut }) => {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    //fetchStudents();
+    fetchStudents();
   }, []);
 
   async function fetchStudents() {
@@ -46,7 +46,7 @@ const App = ({ signOut }) => {
       query: createStudentMutation,
       variables: { input: data },
     });
-    //fetchStudents();
+    fetchStudents();
     event.target.reset();
   }
 
