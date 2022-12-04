@@ -15,6 +15,24 @@ export type AmplifyDependentResourcesAttributes = {
             "GraphQLAPIKeyOutput": "string",
             "GraphQLAPIIdOutput": "string",
             "GraphQLAPIEndpointOutput": "string"
+        },
+        "itemsApi": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        },
+        "generateGroupApi": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        }
+    },
+    "function": {
+        "generateGroup": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
         }
     }
 }

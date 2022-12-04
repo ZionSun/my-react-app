@@ -41,6 +41,28 @@
           "additionalAuthenticationProviders": []
         }
       }
+    },
+    "generateGroupApi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "generateGroup",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    }
+  },
+  "function": {
+    "generateGroup": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": []
     }
   }
 }

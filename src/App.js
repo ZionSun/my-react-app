@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "@aws-amplify/ui-react/styles.css";
-import { API } from "aws-amplify";
+import { API, Auth } from "aws-amplify";
 import {
   Button,
   Flex,
@@ -11,6 +11,7 @@ import {
   TextField,
   View,
   withAuthenticator,
+  useAuthenticator
 } from "@aws-amplify/ui-react";
 import { listStudents } from "./graphql/queries";
 import {
@@ -22,7 +23,7 @@ const App = ({ signOut }) => {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    //fetchStudents();
+    fetchStudents();
   }, []);
 
   async function fetchStudents() {
@@ -46,7 +47,7 @@ const App = ({ signOut }) => {
       query: createStudentMutation,
       variables: { input: data },
     });
-    //fetchStudents();
+    fetchStudents();
     event.target.reset();
   }
 
@@ -57,6 +58,20 @@ const App = ({ signOut }) => {
       query: deleteStudentMutation,
       variables: { input: { id } },
     });
+  }
+
+  async function callApi() {
+    const user = await Auth.currentAuthenticatedUser()
+    const token = user.signInUserSession.idToken.jwtToken
+    console.log("token: ", token)
+
+    const requestData = {
+        headers: {                      
+            Authorization: token
+        }
+    }
+    const data = await API.post('generateGroupApi', '/groups', requestData)
+    console.log("data: ", data)
   }
 
   return (
@@ -113,6 +128,23 @@ const App = ({ signOut }) => {
             </Button>
           </Flex>
         ))}
+      </View>
+      <View margin="3rem 0">
+        <Flex
+        direction="row"
+        justifyContent="center"
+        alignItems="center">
+          <StepperField
+            max={5}
+            min={1}
+            step={1}
+            label="Number of Groups"
+            name="Number of Groups"
+          />
+          <Button onClick={callApi}>
+            Generate Groups
+          </Button>
+        </Flex>
       </View>
       <Button onClick={signOut}>Sign Out</Button>
     </View>
