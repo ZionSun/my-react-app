@@ -70,7 +70,7 @@ const App = ({ signOut }) => {
             Authorization: token
         }
     }
-    const data = await API.post('generateGroupApi', '/groups', requestData)
+    const data = await API.get('deployTest', '/tests', requestData)
     console.log("data: ", data)
   }
 

@@ -18,12 +18,16 @@
       },
       "api": {
         "myreactapp": {},
-        "generateGroupApi": {}
+        "deployTest": {}
       },
       "function": {
         "generateGroup": {
           "deploymentBucketName": "amplify-amplify769f21c1cd5e4-staging-11251-deployment",
           "s3Key": "amplify-builds/generateGroup-38737a4358316c54634c-build.zip"
+        },
+        "testfunctionLambda": {
+          "deploymentBucketName": "amplify-amplify769f21c1cd5e4-staging-11251-deployment",
+          "s3Key": "amplify-builds/testfunctionLambda-31504d686172462f6935-build.zip"
         }
       }
     }

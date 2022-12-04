@@ -1,9 +1,9 @@
 {
   "version": 1,
   "paths": {
-    "/groups": {
-      "name": "/groups",
-      "lambdaFunction": "generateGroup",
+    "/tests": {
+      "name": "/tests",
+      "lambdaFunction": "testfunctionLambda",
       "permissions": {
         "setting": "protected",
         "auth": [
