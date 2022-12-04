@@ -66,7 +66,7 @@ const App = ({ signOut }) => {
     console.log("token: ", token)
 
     const requestData = {
-        headers: {                      
+        headers: {                 
             Authorization: token
         }
     }
